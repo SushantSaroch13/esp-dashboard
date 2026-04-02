@@ -54,7 +54,7 @@ const initialForm: FormState = {
 const initialQuery: QueryState = {
   start: "",
   end: "",
-  cursor: "0",
+  cursor: "",
   limit: "20",
   latestAnchor: "1000000",
 };
