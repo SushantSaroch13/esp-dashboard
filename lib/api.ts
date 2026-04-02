@@ -10,8 +10,8 @@ export const fetchDataAPI = async (query: any) => {
     params.set("id", `${query.start}-${query.end}`);
   } else if (query.cursor) {
     params.set("cursor", String(query.cursor));
-  } else {
-    params.set("desc", "1");
+  } else if (query.desc) {
+    params.set("desc", String(query.desc));
   }
 
   const res = await fetch(`${API}/data?${params.toString()}`);

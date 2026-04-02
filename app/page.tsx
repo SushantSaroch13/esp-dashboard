@@ -113,43 +113,15 @@ export default function Home() {
   };
 
   const fetchLatestWindow = async (limit: number) => {
-    const probeRanges = [
-      { start: "1000", end: "1100" },
-      { start: "900", end: "1100" },
-      { start: "800", end: "1100" },
-      { start: "700", end: "1100" },
-      { start: "0", end: initialQuery.latestAnchor || "1000000" },
-    ];
+    const json = await fetchDataAPI({ desc: "1", limit: String(limit) });
+    const normalized = normalizeRecords(json ?? []);
 
-    let collected: RecordItem[] = [];
-
-    for (const range of probeRanges) {
-      try {
-        const json = await fetchDataAPI({
-          start: range.start,
-          end: range.end,
-          limit: "200",
-        });
-        const normalized = normalizeRecords(json ?? []);
-
-        if (normalized.length > 0) {
-          collected = normalized;
-          if (normalized[0].id >= 1000 || normalized.length >= limit) {
-            break;
-          }
-        }
-      } catch {
-        continue;
-      }
-    }
-
-    if (collected.length === 0) {
+    if (normalized.length === 0) {
       throw new Error("ESP device is offline or no data is available.");
     }
 
-    const latestWindow = collected.slice(0, limit);
-    setData(latestWindow);
-    setCursorFromRecords(latestWindow);
+    setData(normalized);
+    setCursorFromRecords(normalized);
     setLastUpdated(new Date().toLocaleString());
   };
 
