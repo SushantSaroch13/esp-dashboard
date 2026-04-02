@@ -43,9 +43,9 @@ npm install
 Create a `.env.local` file in the root:
 
 ```env
-RELAY_URL=https://your-relay.up.railway.app
-ESP_USER=admin
-ESP_PASS=yourpassword
+ESP_API_URL=https://your-relay.up.railway.app
+ESP_API_USER=admin
+ESP_API_PASS=yourpassword
 ```
 
 > These are kept server-side (Next.js API routes / server components) — never exposed to the browser.
@@ -64,7 +64,7 @@ Open [http://localhost:3000](http://localhost:3000).
 
 1. Push this repo to GitHub
 2. Go to [vercel.com](https://vercel.com) → **New Project** → import this repo
-3. Add environment variables (`RELAY_URL`, `ESP_USER`, `ESP_PASS`) in the Vercel project settings
+3. Add environment variables (`ESP_API_URL`, `ESP_API_USER`, `ESP_API_PASS`) in the Vercel project settings
 4. Deploy — Vercel auto-builds on every push to `main`
 
 ---
