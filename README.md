@@ -43,7 +43,7 @@ npm install
 Create a `.env.local` file in the root:
 
 ```env
-ESP_API_URL=https://your-relay.up.railway.app
+RELAY_URL=https://your-relay.up.railway.app
 ESP_API_USER=admin
 ESP_API_PASS=yourpassword
 ```
