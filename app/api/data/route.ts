@@ -1,5 +1,5 @@
 async function proxy(req: Request, method: string) {
-  const esp = process.env.ESP_API_URL;
+  const esp = process.env.RELAY_URL;
   const user = process.env.ESP_API_USER;
   const pass = process.env.ESP_API_PASS;
 
