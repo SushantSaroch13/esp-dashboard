@@ -28,7 +28,7 @@ async function proxy(req: Request, method: string) {
     });
   } catch (err) {
     return new Response(
-      JSON.stringify({ error: "Fetch failed", detail: String(err), url }),
+      JSON.stringify({ error: "Fetch failed", detail: String(err), cause: String((err as any)?.cause ?? ""), url }),
       { status: 502, headers: { "Content-Type": "application/json" } }
     );
   }
